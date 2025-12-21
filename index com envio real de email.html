@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Clínica Veterinária e Pet Shop</title>
+    
+    <!-- Tailwind CSS (Via CDN para não precisar instalar nada) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de cores personalizadas baseadas no seu pedido (Tons de Laranja) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            100: '#ffedd5', // Laranja claro fundo
+                            500: '#f97316', // Laranja principal (botões/destaques)
+                            600: '#ea580c', // Laranja escuro (hover)
+                            900: '#7c2d12', // Texto escuro
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fontes do Google e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .scroll-smooth { scroll-behavior: smooth; }
+        /* Efeito suave nas imagens */
+        .hover-zoom { transition: transform 0.5s ease; }
+        .group:hover .hover-zoom { transform: scale(1.1); }
+        /* Cursor pointer para elementos clicáveis */
+        .cursor-pointer { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 scroll-smooth">
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <!-- LOGO: Aqui usamos o arquivo logo.PNG -->
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <img src="logo.PNG" onerror="this.src='https://placehold.co/150x50?text=LOGO+AQUI'" alt="Logo PetShop" class="h-12 w-auto object-contain">
+                        <span class="font-bold text-2xl text-brand-600 hidden md:block">PetCare</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-brand-500 font-medium transition">Início</a>
+                    <a href="#servicos" class="text-gray-600 hover:text-brand-500 font-medium transition">Serviços</a>
+                    <a href="#equipe" class="text-gray-600 hover:text-brand-500 font-medium transition">Equipe</a>
+                    <a href="#localizacao" class="text-gray-600 hover:text-brand-500 font-medium transition">Localização</a>
+                    
+                    <!-- Botão WhatsApp CTA -->
+                    <a href="https://wa.me/5511999999999" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> Agendar Agora
+                    </a>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <div class="flex items-center md:hidden">
+                    <button onclick="toggleMenu()" class="text-gray-600 hover:text-brand-500 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (Escondido por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#home" class="block px-4 py-3 text-gray-700 hover:bg-brand-100">Início</a>
+            <a href="#servicos" class="block px-4 py-3 text-gray-700 hover:bg-brand-100">Serviços</a>
+            <a href="#equipe" class="block px-4 py-3 text-gray-700 hover:bg-brand-100">Equipe</a>
+            <a href="#localizacao" class="block px-4 py-3 text-gray-700 hover:bg-brand-100">Localização</a>
+            <a href="https://wa.me/5511999999999" class="block px-4 py-3 text-brand-600 font-bold bg-brand-50">Agendar pelo WhatsApp</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Capa) -->
+    <section id="home" class="relative pt-20 pb-12 lg:pt-32 lg:pb-24 flex items-center min-h-[80vh]">
+        <!-- Imagem de Fundo (baseada no arquivo "seu pet merece o melhor.jpg") -->
+        <div class="absolute inset-0 z-0">
+            <img src="seu pet merece o melhor.jpg" onerror="this.src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2069&auto=format&fit=crop'" class="w-full h-full object-cover" alt="Cachorro feliz">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Seu pet merece <br> <span class="text-brand-500">o melhor cuidado.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
+                Medicina veterinária de excelência, banho, tosa e muito amor. Tudo o que seu melhor amigo precisa em um só lugar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://wa.me/5511999999999" class="bg-brand-500 hover:bg-brand-600 text-white text-lg px-8 py-4 rounded-full font-bold shadow-xl transition flex justify-center items-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Fazer Agendamento
+                </a>
+                <a href="#servicos" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50 text-white text-lg px-8 py-4 rounded-full font-bold transition flex justify-center items-center">
+                    Conhecer Serviços
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO NOSSOS SERVIÇOS -->
+    <section id="servicos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm">O que fazemos</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Nossos Serviços
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Clique nos quadros abaixo para ver os detalhes completos de cada serviço.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Clínica (Clicável) -->
+                <div onclick="openService('clinica')" class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-brand-500 group cursor-pointer transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mb-6 text-2xl group-hover:bg-brand-500 group-hover:text-white transition">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition">Clínica Veterinária</h4>
+                    <p class="text-gray-600 mb-4">
+                        Consultas, exames e tratamentos com profissionais qualificados.
+                    </p>
+                    <span class="text-brand-600 font-semibold text-sm flex items-center">
+                        Ver procedimentos <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </div>
+
+                <!-- Card 2: Banho (Clicável) -->
+                <div onclick="openService('banho')" class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-brand-500 group cursor-pointer transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mb-6 text-2xl group-hover:bg-brand-500 group-hover:text-white transition">
+                        <i class="fas fa-bath"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition">Banho Relaxante</h4>
+                    <p class="text-gray-600 mb-4">
+                        Banho completo com produtos de qualidade, deixando seu pet limpo e cheiroso.
+                    </p>
+                    <span class="text-brand-600 font-semibold text-sm flex items-center">
+                        Ver opções de banho <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </div>
+
+                <!-- Card 3: Tosa (Clicável) -->
+                <div onclick="openService('tosa')" class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition border-t-4 border-brand-500 group cursor-pointer transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mb-6 text-2xl group-hover:bg-brand-500 group-hover:text-white transition">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition">Tosa Especializada</h4>
+                    <p class="text-gray-600 mb-4">
+                        Tosa higiênica e estética realizada com cuidado e técnica.
+                    </p>
+                    <span class="text-brand-600 font-semibold text-sm flex items-center">
+                        Ver tipos de tosa <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO AMIGOS PELUDOS (Categorias Estilo Portfolio) -->
+    <section class="py-16 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-extrabold text-gray-900">Nossos Amigos Peludos</h3>
+                <p class="mt-4 text-gray-600">Confira nossa galeria de pacientes clicando nas categorias abaixo.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Categoria 1: Cães -->
+                <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('dogs')">
+                    <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9205?auto=format&fit=crop&w=800&q=80" alt="Cães" class="w-full h-full object-cover hover-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
+                        <h4 class="text-white text-3xl font-bold mb-2">Cachorros</h4>
+                        <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
+                            Ver galeria <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Categoria 2: Gatos -->
+                <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('cats')">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80" alt="Gatos" class="w-full h-full object-cover hover-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
+                        <h4 class="text-white text-3xl font-bold mb-2">Gatos</h4>
+                        <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
+                            Ver galeria <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Categoria 3: Ambos -->
+                <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('mixed')">
+                    <img src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?auto=format&fit=crop&w=800&q=80" alt="Cães e Gatos" class="w-full h-full object-cover hover-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
+                        <h4 class="text-white text-3xl font-bold mb-2">Amigos</h4>
+                        <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
+                            Ver galeria <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO NOSSA EQUIPE -->
+    <section id="equipe" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-extrabold text-gray-900">Nossa Equipe Veterinária</h3>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Vet 1 -->
+                <div class="w-full md:w-80 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 text-center pb-6">
+                    <div class="h-64 overflow-hidden bg-gray-200">
+                         <!-- Placeholder para foto da veterinária -->
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Ana">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-xl font-bold text-gray-900">Dra. Ana Silva</h4>
+                        <p class="text-brand-600 font-medium mb-2">Veterinária Chefe</p>
+                        <p class="text-sm text-gray-500">CRMV-SP 12345</p>
+                    </div>
+                </div>
+
+                <!-- Vet 2 -->
+                <div class="w-full md:w-80 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 text-center pb-6">
+                    <div class="h-64 overflow-hidden bg-gray-200">
+                        <!-- Placeholder para foto da veterinária -->
+                        <img src="https://images.unsplash.com/photo-1623366302587-bca8c1d64359?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Clara">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-xl font-bold text-gray-900">Dra. Clara Mendes</h4>
+                        <p class="text-brand-600 font-medium mb-2">Clínica Geral e Cirurgia</p>
+                        <p class="text-sm text-gray-500">CRMV-SP 67890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO LOCALIZAÇÃO & CONTATO -->
+    <section id="localizacao" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Coluna Esquerda: Informações e Mapa -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-6">Nossa Localização</h3>
+                        
+                        <!-- Foto da Frente (foto-loja.jpg) -->
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-6 h-64">
+                            <img src="foto-loja.jpg" onerror="this.src='https://placehold.co/600x400?text=FOTO+DA+LOJA'" alt="Frente da Loja" class="w-full h-full object-cover">
+                        </div>
+
+                        <ul class="space-y-4 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-brand-500 text-xl mt-1 mr-3"></i>
+                                <span>
+                                    <strong>Endereço:</strong><br>
+                                    Rua dos Veterinários, 123 - Centro<br>
+                                    Cidade Exemplo - SP (Baseado em "localização.png")
+                                </span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-brand-500 text-xl mt-1 mr-3"></i>
+                                <span>
+                                    <strong>Horário de Funcionamento:</strong><br>
+                                    Segunda a Sexta: 08:00 - 19:00<br>
+                                    Sábado: 08:00 - 14:00<br>
+                                    Domingo: Fechado
+                                </span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fab fa-whatsapp text-brand-500 text-xl mt-1 mr-3"></i>
+                                <span>
+                                    <strong>Agendamento:</strong><br>
+                                    (11) 99999-9999
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Botão Mapa Google (Substituto do Iframe) -->
+                    <div class="w-full h-64 bg-gray-100 rounded-xl overflow-hidden shadow-inner flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-gray-300">
+                        <i class="fas fa-map-marked-alt text-4xl text-brand-500 mb-4"></i>
+                        <p class="text-gray-600 mb-4">Veja a rota e nossa localização exata.</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Rua+dos+Veterinários,+123+-+Centro,+Cidade+Exemplo" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fas fa-external-link-alt"></i> Clique aqui para abrir no Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Formulário de Contato -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-brand-500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">Envie uma mensagem</h4>
+                    
+                    <!-- AQUI É ONDE VOCÊ CONFIGURA O E-MAIL (FORMSPREE) -->
+                    <!-- Substitua o link abaixo pelo seu link do Formspree -->
+                    <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Seu Nome</label>
+                                <input name="nome" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 bg-gray-50 px-4 py-2 border" placeholder="Nome completo">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Seu E-mail</label>
+                                <input name="email" type="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 bg-gray-50 px-4 py-2 border" placeholder="exemplo@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Assunto</label>
+                                <select name="assunto" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 bg-gray-50 px-4 py-2 border">
+                                    <option>Dúvida Geral</option>
+                                    <option>Agendamento</option>
+                                    <option>Elogio/Sugestão</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Sua Pergunta</label>
+                                <textarea name="mensagem" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 bg-gray-50 px-4 py-2 border" placeholder="Como podemos ajudar?"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                Enviar por E-mail
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Info 1 -->
+                <div>
+                    <h5 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-paw text-brand-500"></i> PetCare
+                    </h5>
+                    <p class="text-gray-400 text-sm">
+                        Cuidando do seu melhor amigo com amor, carinho e profissionalismo desde 2010.
+                    </p>
+                </div>
+                <!-- Redes Sociais -->
+                <div class="text-center">
+                    <h5 class="text-lg font-bold mb-4">Siga-nos</h5>
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-brand-500 transition text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-500 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Contato Rápido -->
+                <div class="text-right sm:text-left md:text-right">
+                    <h5 class="text-lg font-bold mb-4">Agende Agora</h5>
+                    <a href="https://wa.me/5511999999999" class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-bold transition">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+                &copy; 2023 PetCare Clínica Veterinária. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE SERVIÇOS (Novo) -->
+    <div id="service-modal" class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
+            
+            <!-- Header do Modal -->
+            <div class="bg-brand-500 px-6 py-4 flex justify-between items-center text-white">
+                <h3 id="service-modal-title" class="text-2xl font-bold flex items-center gap-3">
+                    <!-- Icone + Titulo via JS -->
+                </h3>
+                <button onclick="closeService()" class="text-white hover:bg-white/20 rounded-full p-2 transition">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Corpo do Modal -->
+            <div class="p-8 overflow-y-auto">
+                <p id="service-modal-description" class="text-gray-600 text-lg mb-6"></p>
+                
+                <h4 class="font-bold text-gray-900 mb-4 border-b pb-2">Procedimentos Disponíveis:</h4>
+                <ul id="service-modal-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Lista gerada via JS -->
+                </ul>
+
+                <!-- CTA dentro do modal -->
+                <div class="mt-8 text-center pt-6 border-t border-gray-100">
+                    <p class="text-gray-600 mb-4">Precisa desse serviço? Fale conosco agora!</p>
+                    <a href="https://wa.me/5511999999999" target="_blank" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i> Agendar Serviço
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE GALERIA (Mantido) -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-white hidden overflow-y-auto">
+        <div class="min-h-screen relative">
+            <div class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm z-50 p-4 shadow-sm flex items-center justify-between">
+                <button onclick="closeGallery()" class="text-gray-600 hover:text-brand-600 flex items-center font-bold text-lg transition">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar
+                </button>
+                <h2 id="gallery-title" class="text-xl font-bold text-gray-800">Galeria</h2>
+                <div class="w-16"></div>
+            </div>
+            <div class="pt-24 pb-12 px-4 max-w-7xl mx-auto">
+                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // DADOS DOS SERVIÇOS
+        const serviceData = {
+            clinica: {
+                title: "Clínica Veterinária",
+                icon: "fa-stethoscope",
+                description: "Oferecemos atendimento clínico completo com veterinários experientes e apaixonados pelo que fazem. Dispomos de consultórios equipados para garantir o melhor diagnóstico e tratamento.",
+                items: [
+                    "Consultas de Rotina e Emergência",
+                    "Vacinação (V8, V10, Antirrábica, Giardia)",
+                    "Cirurgias Gerais e Castração",
+                    "Exames Laboratoriais (Sangue, Urina, Fezes)",
+                    "Ultrassonografia e Raio-X",
+                    "Limpeza de Tártaro (Periodontia)",
+                    "Microchipagem e Identificação",
+                    "Acompanhamento Pediátrico e Geriátrico"
+                ]
+            },
+            banho: {
+                title: "Banho Relaxante",
+                icon: "fa-bath",
+                description: "Mais do que limpeza, um momento de relaxamento para seu pet. Utilizamos produtos hipoalergênicos e água com temperatura controlada.",
+                items: [
+                    "Banho Simples e Completo",
+                    "Banho Medicamentoso (Tratamento de pele)",
+                    "Hidratação Profunda de Pelagem",
+                    "Corte de Unhas",
+                    "Limpeza de Ouvidos (Otoplastia higiênica)",
+                    "Escovação de Dentes",
+                    "Banho Antipulgas e Carrapatos",
+                    "Secagem Cuidadosa e Silenciosa"
+                ]
+            },
+            tosa: {
+                title: "Tosa Especializada",
+                icon: "fa-cut",
+                description: "Nossos profissionais dominam diversas técnicas para valorizar a beleza da raça ou garantir o conforto do seu animal nos dias quentes.",
+                items: [
+                    "Tosa Higiênica (Patas e partes íntimas)",
+                    "Tosa na Tesoura (Acabamento perfeito)",
+                    "Tosa da Raça (Padrão oficial)",
+                    "Tosa Bebê (Para filhotes)",
+                    "Tosa na Máquina (Várias alturas)",
+                    "Desembolamento de Nós",
+                    "Carding (Remoção de subpelo)",
+                    "Trimming (Para raças de pelo duro)"
+                ]
+            }
+        };
+
+        // Função para abrir o Modal de Serviço
+        function openService(type) {
+            const data = serviceData[type];
+            if (!data) return;
+
+            // Popula os dados
+            const titleEl = document.getElementById('service-modal-title');
+            titleEl.innerHTML = `<i class="fas ${data.icon}"></i> ${data.title}`;
+            
+            document.getElementById('service-modal-description').textContent = data.description;
+            
+            const listEl = document.getElementById('service-modal-list');
+            listEl.innerHTML = ''; // Limpa lista anterior
+            data.items.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-100';
+                li.innerHTML = `<i class="fas fa-check text-green-500 mr-3"></i> ${item}`;
+                listEl.appendChild(li);
+            });
+
+            // Mostra o modal
+            document.getElementById('service-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Trava scroll
+        }
+
+        // Função para fechar o Modal de Serviço
+        function closeService() {
+            document.getElementById('service-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Destrava scroll
+        }
+
+        // Fecha modal ao clicar fora
+        document.getElementById('service-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeService();
+        });
+
+
+        // --- CÓDIGO DA GALERIA ---
+        // COMO COLOCAR SUAS FOTOS:
+        // 1. Salve as fotos na mesma pasta deste arquivo.
+        // 2. Troque os links abaixo pelo nome do seu arquivo (ex: 'foto1.jpg').
+        // 3. Mantenha as aspas "" em volta do nome.
+        const galleryData = {
+            dogs: [
+                // Coloque aqui as fotos dos CACHORROS
+                "cachorro1.jpg", // Exemplo: Substitua pelo nome do seu arquivo
+                "cachorro2.jpg",
+                "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80", // Pode manter links da internet se quiser
+                "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9205?w=600&q=80",
+                "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80",
+                "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=600&q=80"
+            ],
+            cats: [
+                // Coloque aqui as fotos dos GATOS
+                "gato1.jpg", 
+                "gato2.jpg",
+                "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80",
+                "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&q=80",
+                "https://images.unsplash.com/photo-1519052537078-e6302a4968ef?w=600&q=80",
+                "https://images.unsplash.com/photo-1495360019602-e001921678fe?w=600&q=80"
+            ],
+            mixed: [
+                // Coloque aqui as fotos dos DOIS (AMIGOS)
+                "amigos1.jpg",
+                "https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?w=600&q=80",
+                "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=600&q=80",
+                "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
+                "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80"
+            ]
+        };
+
+        function openGallery(category) {
+            const modal = document.getElementById('gallery-modal');
+            const grid = document.getElementById('gallery-grid');
+            const title = document.getElementById('gallery-title');
+            
+            const titles = { dogs: 'Nossos Cães', cats: 'Nossos Gatos', mixed: 'Todos os Amigos' };
+            title.textContent = titles[category] || 'Galeria';
+            grid.innerHTML = '';
+
+            const images = galleryData[category] || [];
+            images.forEach(imgUrl => {
+                const div = document.createElement('div');
+                div.className = 'aspect-square rounded-xl overflow-hidden shadow-sm bg-gray-100';
+                div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Pet">`;
+                grid.appendChild(div);
+            });
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
