@@ -3,7 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Curió Clínica Veterinária</title>
+    
+    <!-- SEO BÁSICO OTIMIZADO -->
+    <title>Agro Curió - Clínica Veterinária e Pet Shop em São José dos Campos</title>
+    <meta name="description" content="Agro Curió: Clínica Veterinária e Pet Shop no Jardim América, SJC. Consultas, vacinas, cirurgias, dermatologia, cardiologia, banho e tosa. Cuidado com amor e profissionalismo. Agende agora!">
+    <meta name="keywords" content="veterinário sjc, clínica veterinária são josé dos campos, pet shop jardim américa, banho e tosa sjc, vacinas pet, castração, dermatologia veterinária, cardiologia veterinária, agro curió">
+    <meta name="author" content="Agro Curió">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://agrocurio-clinica-veterinaria.vercel.app/">
+
+    <!-- OPEN GRAPH (Para ficar bonito ao compartilhar no WhatsApp/Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agrocurio-clinica-veterinaria.vercel.app/">
+    <meta property="og:title" content="Agro Curió - Clínica Veterinária e Pet Shop em SJC">
+    <meta property="og:description" content="Cuidado completo para seu pet: Clínica Geral, Especialidades, Cirurgias, Banho e Tosa. Venha nos conhecer no Jardim América!">
+    <meta property="og:image" content="https://agrocurio-clinica-veterinaria.vercel.app/images/foto-local.jpg">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- DADOS ESTRUTURADOS (Schema.org para Google Maps/Negócios Locais) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VeterinaryCare",
+      "name": "Agro Curió Clínica Veterinária",
+      "image": "https://agrocurio-clinica-veterinaria.vercel.app/images/foto-local.jpg",
+      "@id": "https://agrocurio-clinica-veterinaria.vercel.app/",
+      "url": "https://agrocurio-clinica-veterinaria.vercel.app/",
+      "telephone": "+5512982176815",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Groenlândia, 38",
+        "addressLocality": "Jardim América",
+        "addressRegion": "SP",
+        "postalCode": "12235-000",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.2237,
+        "longitude": -45.8992
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/agrocuriosjc",
+        "https://www.instagram.com/agrocurio/"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
     
     <!-- Tailwind CSS (Via CDN para não precisar instalar nada) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,8 +119,8 @@
                     <!-- LOGO: Aqui usamos o arquivo logo.PNG -->
 
                     <div class="flex-shrink-0 flex items-center gap-2">
-                        <img src="images/logo.PNG" onerror="this.src='https://placehold.co/150x50?text=LOGO+AQUI'" alt="Logo PetShop" class="h-12 w-auto object-contain">
-                        <span class="font-bold text-2xl text-brand-600 hidden md:block">Agro Curió Clínica Veterinária</span>
+                        <img src="images/logo.PNG" onerror="this.src='https://placehold.co/150x50?text=LOGO+AQUI'" alt="Logo Agro Curió Clínica Veterinária" class="h-12 w-auto object-contain">
+                        <span class="font-bold text-2xl text-brand-600 hidden md:block">Agro Curió</span>
 
                     </div>
 
@@ -62,21 +128,21 @@
                 
                 <!-- Menu Desktop -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-brand-500 font-medium transition">Início</a>
-                    <a href="#servicos" class="text-gray-600 hover:text-brand-500 font-medium transition">Serviços</a>
-                    <a href="#especialidades" class="text-gray-600 hover:text-brand-500 font-medium transition">Especialidades</a>
-                    <a href="#equipe" class="text-gray-600 hover:text-brand-500 font-medium transition">Equipe</a>
-                    <a href="#localizacao" class="text-gray-600 hover:text-brand-500 font-medium transition">Localização</a>
+                    <a href="#home" class="text-gray-600 hover:text-brand-500 font-medium transition" title="Ir para o início">Início</a>
+                    <a href="#servicos" class="text-gray-600 hover:text-brand-500 font-medium transition" title="Ver nossos serviços">Serviços</a>
+                    <a href="#especialidades" class="text-gray-600 hover:text-brand-500 font-medium transition" title="Ver especialidades veterinárias">Especialidades</a>
+                    <a href="#equipe" class="text-gray-600 hover:text-brand-500 font-medium transition" title="Conheça nossa equipe">Equipe</a>
+                    <a href="#localizacao" class="text-gray-600 hover:text-brand-500 font-medium transition" title="Veja nossa localização">Localização</a>
                     
                     <!-- Botão WhatsApp CTA -->
-                    <a href="https://wa.me/5512982176815" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition flex items-center gap-2">
+                    <a href="https://wa.me/5512982176815" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition flex items-center gap-2" title="Agendar consulta pelo WhatsApp">
                         <i class="fab fa-whatsapp"></i> Agendar Agora
                     </a>
                 </div>
 
                 <!-- Botão Menu Mobile -->
                 <div class="flex items-center md:hidden">
-                    <button onclick="toggleMenu()" class="text-gray-600 hover:text-brand-500 focus:outline-none">
+                    <button onclick="toggleMenu()" class="text-gray-600 hover:text-brand-500 focus:outline-none" aria-label="Abrir menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -98,7 +164,7 @@
     <section id="home" class="relative pt-20 pb-12 lg:pt-32 lg:pb-24 flex items-center min-h-[80vh]">
         <!-- Imagem de Fundo (baseada no arquivo "seu pet merece o melhor.jpg") -->
         <div class="absolute inset-0 z-0">
-            <img src="seu pet merece o melhor.jpg" onerror="this.src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2069&auto=format&fit=crop'" class="w-full h-full object-cover" alt="Cachorro feliz">
+            <img src="seu pet merece o melhor.jpg" onerror="this.src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2069&auto=format&fit=crop'" class="w-full h-full object-cover" alt="Cachorro feliz sendo atendido na Agro Curió">
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
         </div>
 
@@ -107,7 +173,7 @@
                 Seu pet merece <br> <span class="text-brand-500">o melhor cuidado.</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
-                Medicina veterinária de excelência, banho, tosa e muito amor. Tudo o que seu melhor amigo precisa em um só lugar.
+                Medicina veterinária de excelência, banho, tosa e muito amor em São José dos Campos. Tudo o que seu melhor amigo precisa em um só lugar.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="https://wa.me/5512982176815" class="bg-brand-500 hover:bg-brand-600 text-white text-lg px-8 py-4 rounded-full font-bold shadow-xl transition flex justify-center items-center gap-2">
@@ -295,7 +361,7 @@
                 
                 <!-- Categoria 1: Cães -->
                 <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('dogs')">
-                    <img src="images/cachorro.jpg?auto=format&fit=crop&w=800&q=80" alt="Cães" class="w-full h-full object-cover hover-zoom">
+                    <img src="images/cachorro.jpg?auto=format&fit=crop&w=800&q=80" alt="Cães felizes na Agro Curió" class="w-full h-full object-cover hover-zoom">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
                         <h4 class="text-white text-3xl font-bold mb-2">Cachorros</h4>
                         <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
@@ -306,7 +372,7 @@
 
                 <!-- Categoria 2: Gatos -->
                 <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('cats')">
-                    <img src="images/gato.jpg?auto=format&fit=crop&w=800&q=80" alt="Gatos" class="w-full h-full object-cover hover-zoom">
+                    <img src="images/gato.jpg?auto=format&fit=crop&w=800&q=80" alt="Gatos relaxados na Agro Curió" class="w-full h-full object-cover hover-zoom">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
                         <h4 class="text-white text-3xl font-bold mb-2">Gatos</h4>
                         <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
@@ -317,7 +383,7 @@
 
                 <!-- Categoria 3: Ambos -->
                 <div class="group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openGallery('mixed')">
-                    <img src="images/pets.jpg?auto=format&fit=crop&w=800&q=80" alt="Cães e Gatos" class="w-full h-full object-cover hover-zoom">
+                    <img src="images/pets.jpg?auto=format&fit=crop&w=800&q=80" alt="Pets tratados na Agro Curió" class="w-full h-full object-cover hover-zoom">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 transition-opacity duration-300">
                         <h4 class="text-white text-3xl font-bold mb-2">Amigos</h4>
                         <p class="text-gray-300 group-hover:text-white transition-colors flex items-center">
@@ -342,7 +408,7 @@
                 <div class="w-full md:w-80 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 text-center pb-6">
                     <div class="h-64 overflow-hidden bg-gray-200">
                          <!-- Placeholder para foto da veterinária -->
-                        <img src="images/vet1.png?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Ana">
+                        <img src="images/vet1.png?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Gláucia - Veterinária Chefe">
                     </div>
                     <div class="p-4">
                         <h4 class="text-xl font-bold text-gray-900">Dra. Gláucia</h4>
@@ -355,7 +421,7 @@
                 <div class="w-full md:w-80 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 text-center pb-6">
                     <div class="h-64 overflow-hidden bg-gray-200">
                         <!-- Placeholder para foto da veterinária -->
-                        <img src="images/vet2.png?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Clara">
+                        <img src="images/vet2.png?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover object-top" alt="Dra. Isabela - Veterinária Clínica">
                     </div>
                     <div class="p-4">
                         <h4 class="text-xl font-bold text-gray-900">Dra. Isabela</h4>
@@ -379,7 +445,7 @@
                         
                         <!-- Foto da Frente (foto-loja.jpg) -->
                         <div class="rounded-xl overflow-hidden shadow-lg mb-6 h-64">
-                            <img src="images/foto-local.jpg" onerror="this.src='https://placehold.co/600x400?text=FOTO+DA+LOJA'" alt="Frente da Loja" class="w-full h-full object-cover">
+                            <img src="images/foto-local.jpg" onerror="this.src='https://placehold.co/600x400?text=FOTO+DA+LOJA'" alt="Fachada da Agro Curió Clínica Veterinária em São José dos Campos" class="w-full h-full object-cover">
                         </div>
 
                         <ul class="space-y-4 text-gray-600">
@@ -477,10 +543,10 @@
                 <div class="text-center">
                     <h5 class="text-lg font-bold mb-4">Siga-nos</h5>
                     <div class="flex justify-center space-x-6">
-                        <a href="https://www.facebook.com/agrocuriosjc" target="_blank"  class="text-gray-400 hover:text-brand-500 transition text-2xl">
+                        <a href="https://www.facebook.com/agrocuriosjc" target="_blank"  class="text-gray-400 hover:text-brand-500 transition text-2xl" aria-label="Facebook">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/agrocurio/" target="_blank" class="text-gray-400 hover:text-brand-500 transition text-2xl">
+                        <a href="https://www.instagram.com/agrocurio/" target="_blank" class="text-gray-400 hover:text-brand-500 transition text-2xl" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -559,7 +625,7 @@
                 description: "Oferecemos atendimento clínico completo com veterinários experientes e apaixonados pelo que fazem. Dispomos de consultórios equipados para garantir o melhor diagnóstico e tratamento.",
                 items: [
                     "Consultas de Rotina e Emergência",
-                    "Vacinas (V8, V10, Antirrábica, Giardia, Gripe nasal e injetável, Quadrupla felina)",
+                    "Vacinas (Adc, Gripe nasal e injetável, Quadrupla felina)",
                     "Consultas com especialistas",
                     "Cirurgias Gerais e Castração",
                     "Anestesia Inalatória monitorada",
